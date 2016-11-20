@@ -1,8 +1,7 @@
 #include <cmath>
 using namespace std;
 
-bool primeTest(double n)
-{
+bool primeTest(double n) {
     if(n < 0)
         return false;
     
@@ -16,8 +15,7 @@ bool primeTest(double n)
     }
     return true;
 }
-bool primeTest(int n)
-{
+bool primeTest(int n) {
     if(n < 0)
         return false;
  
@@ -35,8 +33,7 @@ bool primeTest(int n)
     }
     return true;
 }
-bool primeTest(unsigned long int n)
-{
+bool primeTest(unsigned long int n) {
     if(n%2 == 0)
     {
       return false;
@@ -51,15 +48,11 @@ bool primeTest(unsigned long int n)
     }
     return true;
 }
-
-bool testIfCube (unsigned long int n)
-{
+bool testIfCube (unsigned long int n) {
   unsigned long int root = round(cbrt(n));
   return root*root*root == n;
 }
-
-string reverseString(string s)
-{
+string reverseString(string s) {
     string reversedStr="";
     for(int i =0;i < s.length();i++)
     {
@@ -67,8 +60,7 @@ string reverseString(string s)
     }
     return reversedStr;
 }
-bool isPalindrome(string s)
-{
+bool isPalindrome(string s) {
     for(int i =0; i < s.length()/2;i++)
     {
         if(s[i] != s[s.length()-1-i])
@@ -78,8 +70,7 @@ bool isPalindrome(string s)
     }
     return true;
 }
-string addStrings(string s1, string s2)
-{
+string addStrings(string s1, string s2) {
     // make the strings the same length
     if ( s1.length() != s2.length())
     {
@@ -113,8 +104,7 @@ string addStrings(string s1, string s2)
     if(carry !=0) addedString=to_string(carry)+addedString;
     return addedString;
 }
-string stringMultiply(string s1, string s2)
-{
+string stringMultiply(string s1, string s2) {
     int carry=0;
     int currTensPow=0;
     string runningTotal="";
@@ -125,32 +115,22 @@ string stringMultiply(string s1, string s2)
         {
             digitMultiply="0"+digitMultiply;
         }
-        //cout << "digitMultiply: "<< digitMultiply<< endl;
         carry=0;
         for(int j = s1.length()-1;j>=0 ;j--)
         {
             int currPlace=int(s2[i]-'0') * int(s1[j]-'0') + carry;
-            //cout << "currPlace: " <<currPlace << endl;
             carry=currPlace/10;
-            //cout <<  "carry: " << carry << endl;
             int digit=currPlace % 10;
-            //cout << "digit: " <<digit << endl;
-            //cout << "digitMultiply: " << digitMultiply << endl;
             digitMultiply=to_string(digit)+digitMultiply;
-            //cout << "digitMultiply: " << digitMultiply << endl;
         }
-        //cout <<digitMultiply << endl;
         if(carry != 0) digitMultiply = to_string(carry)+digitMultiply;
-        //cout <<digitMultiply << endl;
         runningTotal=addStrings(runningTotal,digitMultiply);
 
         currTensPow++;
     }
     return runningTotal;
 }
-
-string stringPow(string base, string pow)
-{
+string stringPow(string base, string pow) {
     string total = base;
     for(int i =1; i< stoi(pow);i++)
     {
