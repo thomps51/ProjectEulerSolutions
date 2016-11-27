@@ -1,3 +1,5 @@
+#ifndef COMMON_H
+#define COMMON_H
 #include <cmath>
 using namespace std;
 
@@ -139,3 +141,4 @@ string stringPow(string base, string pow) {
     return total;
 }
 
+#endif /**COMMON_H**/

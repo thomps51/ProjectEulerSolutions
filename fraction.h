@@ -23,19 +23,19 @@ class fraction {
         //cout << "numSum: " << numSum << endl; 
         num=numSum;
         denom=LCM;
-        simplify();
+        //simplify();
         return *this;
     }
     inline fraction operator*=(const fraction& rhs) {
         num=num*rhs.num;
         denom=denom*rhs.denom;
-        simplify();
+        //simplify();
         return *this;
     }
     inline fraction operator/=(const fraction& rhs) {
         num=num*rhs.denom;
         denom=denom*rhs.num;
-        simplify();
+        //simplify();
         return *this;
     }
     void Print() {
@@ -46,13 +46,11 @@ inline fraction operator+(fraction lhs, const fraction& rhs) {
     lhs+=rhs;
     return lhs;
 }
-inline fraction operator*(fraction lhs, const fraction& rhs)
-{
+inline fraction operator*(fraction lhs, const fraction& rhs) {
     lhs*=rhs;
     return lhs;
 }
-inline fraction operator/(fraction lhs, const fraction& rhs)
-{
+inline fraction operator/(fraction lhs, const fraction& rhs) {
     lhs/=rhs;
     return lhs;
 }

@@ -1,13 +1,11 @@
 #include "fraction.h"
-fraction::fraction(long long numer, long long denomer)
-{
+fraction::fraction(long long numer, long long denomer) {
     num=numer;
     denom=denomer;
     simplify();
 }
 
-void getPrimeFactorsRecursive(long long number, vector<long long> & accumulator)
-{
+void getPrimeFactorsRecursive(long long number, vector<long long> & accumulator) {
     bool prime = true;
     for(long long i =2;i<=sqrt(number);i++)
     {
@@ -21,15 +19,13 @@ void getPrimeFactorsRecursive(long long number, vector<long long> & accumulator)
     }
     if(prime) accumulator.push_back(number);
 }
-vector<long long> getPrimeFactors(long long number)
-{
+vector<long long> getPrimeFactors(long long number) {
     vector<long long> factors;
     getPrimeFactorsRecursive(number,factors);
     return factors;
 }
 
-long long fraction::getLCM(long long num1, long long num2)
-{
+long long fraction::getLCM(long long num1, long long num2) {
     vector<long long> num1Factors=getPrimeFactors(num1);
     vector<long long> num2Factors=getPrimeFactors(num2);
     vector<long long> lcm_parts;
@@ -52,8 +48,7 @@ long long fraction::getLCM(long long num1, long long num2)
     return LCM;
 }
 
-long long fraction::getGCDivis(long long num1, long long num2)
-{
+long long fraction::getGCDivis(long long num1, long long num2) {
     vector<long long> num1Factors=getPrimeFactors(num1);
     vector<long long> num2Factors=getPrimeFactors(num2);
     vector<long long> commonFactors;
@@ -74,33 +69,8 @@ long long fraction::getGCDivis(long long num1, long long num2)
     return GCD;
 }
 
-void fraction::simplify()
-{
+void fraction::simplify() {
     long long divisor=getGCDivis(num,denom);
     num=num/divisor;
     denom=denom/divisor;
 }
-//inline fraction fraction::operator+=(const fraction& rhs)
-//{
-//    long long LCM = getLCM(denom,rhs.denom);
-//    long long numSum= (LCM / denom) * num+ (LCM / rhs.denom) * rhs.num;
-//    num=numSum;
-//    denom=LCM;
-//    simplify();
-//    return *this;
-//}
-//inline fraction operator+(fraction lhs, const fraction& rhs)
-//{
-//    long long LCM = getLCM(lhs.denom,rhs.denom);
-//    long long numSum= (LCM / lhs.denom) * lhs.num+ (LCM / rhs.denom) * rhs.num;
-//    return fraction(numSum,LCM);
-//}
-
-
-
-
-
-
-
-
-

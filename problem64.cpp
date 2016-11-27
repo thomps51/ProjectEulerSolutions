@@ -15,9 +15,11 @@ using namespace std;
 //  static testWindow
 //}
 
+// reusing for problem 66
+unordered_map<unsigned long, vector<unsigned long>> problem64() {
+  //clock_t begin = clock();
 
-int main() {
-  clock_t begin = clock();
+  unordered_map<unsigned long, vector<unsigned long>> sequences;
 
   mpf_t prevTerm;
   mpf_t prevTermInSeq;
@@ -31,12 +33,11 @@ int main() {
   mpf_init2 (nextTermInSeq, 2100);
   mpf_init2 (temp, 2100);
 
-  int max_num = 10000;
-  int testSequenceLength = 10;
+  unsigned long int max_num = 1000;
 
   vector<int> aVec;
   int count = 0;
-  for(int i = 2; i<= max_num ; i++)
+  for(unsigned long int i = 2; i<= max_num ; i++)
   //for(int i = 135; i< 136 ; i++)
   {
     int sqRootInt       = sqrt(i);
@@ -113,31 +114,32 @@ int main() {
               }
             }
           }
+          if( repeatSeqFound ) {
+            sequences[i] = testVec[0];
+            //cout << "sequence for "<< i <<" is ";
+            //for(auto value : testVec[0]) {
+            //  cout << value << " ";
+            //}
+            //cout << endl;
+          }
           if( repeatSeqFound && (repeatLength) %2 ==1) {
             count++;
           }
         }
         testVec.clear();
       }
-  
-
-
 
       mpf_set(prevTermInSeq, nextTermInSeq);
       mpf_set( prevTerm, nextTerm);
-
     }
-
-
-
-
     aVec.clear();
     secondVec.clear();
   }
-  cout << "count: " << count << endl; 
+  //cout << "count: " << count << endl; 
 
-  clock_t end = clock();
-  double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
-  cout << elapsed_secs*1000 << " ms"  << endl;
+  //clock_t end = clock();
+  //double elapsed_secs = double(end - begin) / CLOCKS_PER_SEC;
+  //cout << elapsed_secs*1000 << " ms"  << endl;
+  return sequences;
 }
 
